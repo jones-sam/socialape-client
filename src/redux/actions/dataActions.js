@@ -3,7 +3,7 @@ import {
   LOADING_DATA,
   LIKE_SCREAM,
   UNLIKE_SCREAM,
-  LOADING_UI,
+  DELETE_SCREAM,
 } from "../types"
 import axios from "axios"
 
@@ -36,6 +36,15 @@ export const unlikeScream = (screamId) => (dispatch) => {
     .get(`/scream/${screamId}/unlike`)
     .then((res) => {
       dispatch({ type: UNLIKE_SCREAM, payload: res.data })
+    })
+    .catch((err) => console.error(err))
+}
+
+export const deleteScream = (screamId) => (dispatch) => {
+  axios
+    .delete(`/scream/${screamId}`)
+    .then(() => {
+      dispatch({ type: DELETE_SCREAM, payload: screamId })
     })
     .catch((err) => console.error(err))
 }
