@@ -50,6 +50,7 @@ export const logoutUser = () => (dispatch) => {
 }
 
 export const getUserData = () => (dispatch) => {
+  // Getting the current user
   dispatch({ type: LOADING_USER })
   axios
     .get("/user")
